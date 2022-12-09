@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install software-properties-common apt-transport-https wget ca-certificates curl gnupg-agent lsb-release -y
+sudo apt update && sudo apt upgrade -y
+sudo apt install software-properties-common apt-transport-https wget ca-certificates curl gnupg-agent lsb-release -y
 
 # Sublime Text 3
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+echo "deb https://download.sublimetext.com/apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
 # Fish shell
 sudo add-apt-repository ppa:fish-shell/release-3 -y
 
 # NodeJS 18.x
 curl -sL "https://deb.nodesource.com/setup_18.x" | sudo -E bash -
+
+# Yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
 # Python
 # sudo add-apt-repository ppa:deadsnakes/ppa -y
@@ -20,8 +24,7 @@ curl -sL "https://deb.nodesource.com/setup_18.x" | sudo -E bash -
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
 
 # MongoDB
 # wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
@@ -55,8 +58,8 @@ chmod u+rw ~/.poshthemes/*.omp.*
 rm ~/.poshthemes/themes.zip
 
 # Install all
-sudo apt-get update
-sudo apt-get install \
+sudo apt update
+sudo apt install \
     git \
     tmux \
     vim \
@@ -75,6 +78,7 @@ sudo apt-get install \
     build-essential \
     gnome-tweaks \
     grub-customizer \
+    yanr \
     libcanberra-gtk-module libcanberra-gtk3-module \
     -y
 
@@ -88,7 +92,7 @@ rm -rf ~/firacode
 
 # Set up fish
 mkdir -p ~/.config/fish/
-cat > ~/.config/fish/config.fish << EOF
+cat >~/.config/fish/config.fish <<EOF
 oh-my-posh init fish --config ~/.poshthemes/jblab_2021.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/jandedobbeleer.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/night-owl.omp.json | source
@@ -109,20 +113,36 @@ EOF
 sudo usermod -aG docker $USER
 
 # Change shell to fish
-chsh -s `which fish`
+chsh -s $(which fish)
 
 # Pip
-python3 -m pip install -U pip virtualenv numpy matplotlib pandas sklearn \
-    scipy youtube-dl scrapy itemloaders seaborn pillow autopep8 \
-    pylint rope streamlit faker flask sqlalchemy psycopg2-binary
+python3 -m pip install -U \
+    pip \
+    virtualenv \
+    numpy \
+    matplotlib \
+    pandas \
+    youtube-dl \
+    scrapy \
+    itemloaders \
+    seaborn \
+    pillow \
+    autopep8 \
+    pylint \
+    rope \
+    streamlit \
+    faker \
+    flask \
+    sqlalchemy \
+    psycopg2-binary
 
 # F12 Terminal
-# mkdir -p ~/.local/share/nautilus/scripts/
-# sudo printf "#!/bin/sh\ngnome-terminal" > ~/.local/share/nautilus/scripts/Terminal
-# sudo chmod +x Terminal
-# nautilus -q
-# mkdir -p ~/.config/nautilus/
-# sudo echo "F12 Terminal" > ~/.config/nautilus/scripts-accels
+mkdir -p ~/.local/share/nautilus/scripts/
+sudo printf "#!/bin/sh\ngnome-terminal" >~/.local/share/nautilus/scripts/Terminal
+sudo chmod +x Terminal
+nautilus -q
+mkdir -p ~/.config/nautilus/
+sudo echo "F12 Terminal" >~/.config/nautilus/scripts-accels
 
 # Git config global
 git config --global user.name "Minh Dao"
@@ -135,7 +155,7 @@ sudo rm -rf /opt/Postman
 sudo mv Postman /opt/Postman
 sudo ln -s /opt/Postman/Postman /usr/bin/postman
 
-cat > ~/.local/share/applications/Postman.desktop << EOL
+cat >~/.local/share/applications/Postman.desktop <<EOL
 [Desktop Entry]
 Encoding=UTF-8
 Name=Postman
@@ -183,7 +203,7 @@ curl -o dbeaver.deb -L "https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
 curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.33.1_amd64.deb"
 curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.0_amd64.deb"
 
-sudo apt-get install ./flameshot.deb \
+sudo apt install ./flameshot.deb \
     ./skypeforlinux.deb \
     ./dbeaver.deb \
     ./compass.deb \
@@ -196,8 +216,7 @@ rm *.deb
 # wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin version=5.44.0
 
 # Autoremove
-sudo apt-get autoremove -y
-
+sudo apt autoremove -y
 
 # Snap install
 sudo snap install vlc
