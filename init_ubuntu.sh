@@ -200,8 +200,8 @@ curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/do
 curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
 curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 curl -o dbeaver.deb -L "https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
-curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.33.1_amd64.deb"
-curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.0_amd64.deb"
+curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.34.1_amd64.deb"
+curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.1_amd64.deb"
 
 sudo apt install ./flameshot.deb \
     ./skypeforlinux.deb \
