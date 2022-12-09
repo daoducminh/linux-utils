@@ -4,8 +4,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install software-properties-common apt-transport-https wget ca-certificates curl gnupg-agent lsb-release -y
 
 # Sublime Text 3
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+# wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+# echo "deb https://download.sublimetext.com/apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
 # Fish shell
 sudo add-apt-repository ppa:fish-shell/release-3 -y
@@ -59,7 +59,7 @@ rm ~/.poshthemes/themes.zip
 
 # Install all
 sudo apt update
-sudo apt install \
+sudo apt install -y \
     git \
     tmux \
     vim \
@@ -67,8 +67,6 @@ sudo apt install \
     unzip \
     ffmpeg \
     task-spooler \
-    sublime-text \
-    sublime-merge \
     nodejs \
     docker-ce docker-ce-cli containerd.io docker-compose-plugin \
     goldendict \
@@ -79,8 +77,7 @@ sudo apt install \
     gnome-tweaks \
     grub-customizer \
     yanr \
-    libcanberra-gtk-module libcanberra-gtk3-module \
-    -y
+    libcanberra-gtk-module libcanberra-gtk3-module
 
 # Install FiraCode Nerd Fonts
 mkdir -p ~/.fonts ~/firacode
