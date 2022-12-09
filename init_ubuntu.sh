@@ -76,7 +76,7 @@ sudo apt install -y \
     build-essential \
     gnome-tweaks \
     grub-customizer \
-    yanr \
+    yarn \
     libcanberra-gtk-module libcanberra-gtk3-module
 
 # Install FiraCode Nerd Fonts
@@ -196,13 +196,11 @@ rm postman.tar.gz
 curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/flameshot-12.1.0-1.ubuntu-20.04.amd64.deb"
 curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
 curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-curl -o dbeaver.deb -L "https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb"
 curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.34.1_amd64.deb"
 curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.1_amd64.deb"
 
 sudo apt install ./flameshot.deb \
     ./skypeforlinux.deb \
-    ./dbeaver.deb \
     ./compass.deb \
     ./mongosh.deb \
     ./code.deb \
@@ -217,4 +215,4 @@ sudo apt autoremove -y
 
 # Snap install
 sudo snap install vlc
-sudo snap install intellij-idea-ultimate --channel=2021.1/stable
+sudo snap install intellij-idea-ultimate --channel=2021.1/stable --classic
