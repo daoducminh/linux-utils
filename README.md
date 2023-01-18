@@ -1,1 +1,1 @@
-# Utilities shell scripts for Linux
+# Utility shell scripts for Linux
