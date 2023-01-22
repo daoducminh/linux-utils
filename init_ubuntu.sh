@@ -127,7 +127,7 @@ python3 -m pip install -U \
     autopep8 \
     pylint \
     rope \
-    streamlit \
+    black \
     faker \
     flask \
     sqlalchemy \
@@ -135,11 +135,14 @@ python3 -m pip install -U \
 
 # F12 Terminal
 mkdir -p ~/.local/share/nautilus/scripts/
-sudo printf "#!/bin/sh\ngnome-terminal" >~/.local/share/nautilus/scripts/Terminal
-sudo chmod +x Terminal
+sudo printf "#!/bin/bash\n\ngnome-terminal" >~/.local/share/nautilus/scripts/Terminal
+sudo printf "#!/bin/bash\n\ncode ." >~/.local/share/nautilus/scripts/vscode
+sudo chmod +x ~/.local/share/nautilus/scripts/Terminal
+sudo chmod +x ~/.local/share/nautilus/scripts/vscode
 nautilus -q
 mkdir -p ~/.config/nautilus/
 sudo echo "F12 Terminal" >~/.config/nautilus/scripts-accels
+sudo echo "F3 vscode" >>~/.config/nautilus/scripts-accels
 
 # Git config global
 git config --global user.name "Minh Dao"
@@ -195,15 +198,13 @@ rm postman.tar.gz
 # Download Flameshot, Skype, VSCode, DBeaver, Mongo Compass
 curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/flameshot-12.1.0-1.ubuntu-20.04.amd64.deb"
 curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
-curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
-curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.34.1_amd64.deb"
+curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.35.0_amd64.deb"
 curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.1_amd64.deb"
 
 sudo apt install ./flameshot.deb \
     ./skypeforlinux.deb \
     ./compass.deb \
     ./mongosh.deb \
-    ./code.deb \
     -y
 rm *.deb
 
@@ -214,5 +215,5 @@ rm *.deb
 sudo apt autoremove -y
 
 # Snap install
-sudo snap install vlc
-sudo snap install intellij-idea-ultimate --channel=2021.1/stable --classic
+# sudo snap install vlc
+# sudo snap install intellij-idea-ultimate --channel=2021.1/stable --classic
