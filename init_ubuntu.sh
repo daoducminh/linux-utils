@@ -102,8 +102,6 @@ oh-my-posh init fish --config ~/.poshthemes/jblab_2021.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/atomic.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/bubbles.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/fish.omp.json | source
-
-set -U fish_greeting Howdy, \$USER
 EOF
 
 # Post installation for Docker
@@ -195,7 +193,17 @@ rm postman.tar.gz
 
 # rm filezilla.tar.bz2
 
+# set shortcuts
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['Pause','<Super>t']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"
+# set shortcut for flameshot
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Flameshot'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'flameshot gui'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding 'Print'
+
 # Download Flameshot, Skype, VSCode, DBeaver, Mongo Compass
+curl -o code.deb -L "https://update.code.visualstudio.com/1.73.1/linux-deb-x64/stable"
 curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/flameshot-12.1.0-1.ubuntu-20.04.amd64.deb"
 curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
 curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.35.0_amd64.deb"
@@ -205,6 +213,7 @@ sudo apt install ./flameshot.deb \
     ./skypeforlinux.deb \
     ./compass.deb \
     ./mongosh.deb \
+    ./code.deb \
     -y
 rm *.deb
 
@@ -216,4 +225,4 @@ sudo apt autoremove -y
 
 # Snap install
 # sudo snap install vlc
-# sudo snap install intellij-idea-ultimate --channel=2021.1/stable --classic
+sudo snap install intellij-idea-ultimate --channel=2021.1/stable --classic
