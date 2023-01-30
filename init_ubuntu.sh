@@ -81,7 +81,7 @@ sudo apt install -y \
 
 # Install FiraCode Nerd Fonts
 mkdir -p ~/.fonts ~/firacode
-curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+# curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 unzip firacode.zip -d ~/firacode
 mv ~/firacode/"Fira Code Regular Nerd Font Complete.ttf" ~/.fonts/
 rm firacode.zip
@@ -133,8 +133,8 @@ python3 -m pip install -U \
 
 # F12 Terminal
 mkdir -p ~/.local/share/nautilus/scripts/
-sudo printf "#!/bin/bash\n\ngnome-terminal" >~/.local/share/nautilus/scripts/Terminal
-sudo printf "#!/bin/bash\n\ncode ." >~/.local/share/nautilus/scripts/vscode
+sudo printf "#\!/bin/bash\n\ngnome-terminal" >~/.local/share/nautilus/scripts/Terminal
+sudo printf "#\!/bin/bash\n\ncode ." >~/.local/share/nautilus/scripts/vscode
 sudo chmod +x ~/.local/share/nautilus/scripts/Terminal
 sudo chmod +x ~/.local/share/nautilus/scripts/vscode
 nautilus -q
@@ -224,5 +224,5 @@ rm *.deb
 sudo apt autoremove -y
 
 # Snap install
-# sudo snap install vlc
+sudo snap refresh
 sudo snap install intellij-idea-ultimate --channel=2021.1/stable --classic
