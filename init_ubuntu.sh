@@ -81,7 +81,7 @@ sudo apt install -y \
 
 # Install FiraCode Nerd Fonts
 mkdir -p ~/.fonts ~/firacode
-# curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 unzip firacode.zip -d ~/firacode
 mv ~/firacode/"Fira Code Regular Nerd Font Complete.ttf" ~/.fonts/
 rm firacode.zip
@@ -203,11 +203,11 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding 'Print'
 
 # Download Flameshot, Skype, VSCode, DBeaver, Mongo Compass
-curl -o code.deb -L "https://update.code.visualstudio.com/1.73.1/linux-deb-x64/stable"
+curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/flameshot-12.1.0-1.ubuntu-20.04.amd64.deb"
 curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
-curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.35.0_amd64.deb"
-curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.1_amd64.deb"
+curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.38.2_amd64.deb"
+curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.10.1_amd64.deb"
 
 sudo apt install ./flameshot.deb \
     ./skypeforlinux.deb \
