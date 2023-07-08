@@ -83,7 +83,7 @@ sudo apt install -y \
 mkdir -p ~/.fonts ~/firacode
 curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
 unzip firacode.zip -d ~/firacode
-mv ~/firacode/"Fira Code Regular Nerd Font Complete.ttf" ~/.fonts/
+mv ~/firacode/*.tff ~/.fonts/
 rm firacode.zip
 rm -rf ~/firacode
 
