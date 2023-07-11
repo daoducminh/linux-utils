@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [ $# -gt 0 ]; then
-  AIRFLOW_VERSION=$1
+    AIRFLOW_VERSION=$1
 else
-  AIRFLOW_VERSION=2.6.3
+    AIRFLOW_VERSION=2.6.3
 fi
 
 # Rest of the script remains the same
