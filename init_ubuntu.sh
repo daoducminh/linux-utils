@@ -146,6 +146,7 @@ sudo echo "F3 vscode" >>~/.config/nautilus/scripts-accels
 # Git config global
 git config --global user.name "Minh Dao"
 git config --global user.email "daoducminh1997@gmail.com"
+git config --global init.defaultBranch main
 
 # Install Postman from tar.gz
 curl -o postman.tar.gz -L "https://dl.pstmn.io/download/latest/linux64"
