@@ -88,6 +88,10 @@ mv ~/firacode/*.tff ~/.fonts/
 rm firacode.zip
 rm -rf ~/firacode
 
+# Load Flameshot's config
+mkdir -p ~/.config/flameshot
+cp -f flameshot.conf ~/.config/flameshot/flameshot.ini
+
 # Set up fish
 mkdir -p ~/.config/fish/
 cat >~/.config/fish/config.fish <<EOF
