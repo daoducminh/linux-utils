@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get the gcloud account from the first argument, use the default value if not provided
-gcloud_account=${1:-minhdd@bravestars.com}
+gcloud_account=${1:-20156051@student.hust.edu.vn}
 
 # Get the output of the gcloud command
 gcloud_output=$(gcloud cloud-shell ssh --authorize-session --force-key-file-overwrite --dry-run --account="$gcloud_account" 2>&1)
