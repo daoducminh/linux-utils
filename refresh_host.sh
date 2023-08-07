@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# sudo chmod a+w /etc/hosts
+
 INSTANCE_NAME="${1:-new-system-demo}"
 
 # Get the public IP address using gcloud command
@@ -9,7 +11,10 @@ PUBLIC_IP=$(gcloud compute instances describe "$INSTANCE_NAME" --zone 'us-west1-
 if [ -n "$PUBLIC_IP" ]; then
     if grep -q "$INSTANCE_NAME" /etc/hosts; then
         # Update the hosts file with the new IP address
-        sed -i "s/^.*$INSTANCE_NAME.*$/$PUBLIC_IP    $INSTANCE_NAME/" /etc/hosts
+        cp -f /etc/hosts /tmp
+        sed -i "s/^.*$INSTANCE_NAME.*$/$PUBLIC_IP    $INSTANCE_NAME/" /tmp/hosts
+        cp -f /tmp/hosts /etc/hosts
+        rm /tmp/hosts
         echo "Hosts file updated with new IP address: $PUBLIC_IP"
     else
 	# Add the new IP address to the hosts file
