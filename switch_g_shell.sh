@@ -15,8 +15,9 @@ if grep -q "Host g_shell" ~/.ssh/config; then
     # Check if the public IP address and user are not empty
     if [ -n "$public_ip" ] && [ -n "$user" ]; then
         # Replace the HostName and User for the g_shell host in ~/.ssh/config with the new IP address and user
-        sed -i "/^Host g_shell$/!b; {n; s/^    HostName .*/    HostName $public_ip/}" ~/.ssh/config
-        sed -i "/^Host g_shell$/!b; {n; s/^    User .*/    User $user/}" ~/.ssh/config
+        # sed -i "/^Host g_shell$/!b; {n; s/^    HostName .*/    HostName $public_ip/}" ~/.ssh/config
+        # sed -i "/^Host g_shell$/!b; {n; s/^    User .*/    User $user/}" ~/.ssh/config
+        sed -i -E "/^Host g_shell$/ { n; s/^\s*HostName\s+[^\s]+$/    HostName $public_ip/; n; s/^\s*User\s+[^\s]+$/    User $user/; }" ~/.ssh/config
         echo "Account $gcloud_account updated HostName and User for 'g_shell' with new IP address: $public_ip and user: $user"
     else
         echo "Failed to retrieve public IP address or user."
