@@ -39,7 +39,7 @@ else
     echo "Host $host_name
     HostName $public_ip
     User $user
-    IdentityFile ~/.ssh/$host_name
+    IdentityFile ~/.ssh/google_compute_engine
     Port 6000
     StrictHostKeyChecking no" >>~/.ssh/config
 
