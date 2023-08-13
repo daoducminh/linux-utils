@@ -57,6 +57,9 @@ unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
 chmod u+rw ~/.poshthemes/*.omp.*
 rm ~/.poshthemes/themes.zip
 
+# Vim 9
+sudo add-apt-repository ppa:jonathonf/vim -y
+
 # Install all
 sudo apt update
 sudo apt install -y \
@@ -241,15 +244,30 @@ sudo snap refresh
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
 
+# Add .vimrc
+cat > ~/.vimrc <<EOL
+call plug#begin()
+
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+
+call plug#end()
+
+let g:material_theme_style = 'palenight'
+colorscheme material
+EOL
+
 # Add .bashrc
-echo -e '\n' >> ~/.bashrc
-echo -e '#oh-my-posh\n' >> ~/.bashrc
-echo -e 'eval "$(oh-my-posh init bash --config ~/.poshthemes/jblab_2021.omp.json)"\n' >> ~/.bashrc
-echo -e '\n' >> ~/.bashrc
-echo -e '#env\n' >> ~/.bashrc
-echo -e 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64\n' >> ~/.bashrc
-echo -e 'export AIRFLOW_HOME=$HOME/airflow\n' >> ~/.bashrc
-echo -e 'export SPARK_HOME=$HOME/spark\n' >> ~/.bashrc
-echo -e 'export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH\n' >> ~/.bashrc
-echo -e '\n' >> ~/.bashrc
-echo -e 'export PATH=$PATH:$HOME/.local/bin:$HOME/.local/share/coursier/bin\n' >> ~/.bashrc
+cat >> ~/.bashrc <<EOL
+
+#oh-my-posh
+eval "$(oh-my-posh init bash --config ~/.poshthemes/jblab_2021.omp.json)"
+
+# env
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export AIRFLOW_HOME=$HOME/airflow
+export SPARK_HOME=$HOME/spark
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/share/coursier/bin
+
+EOL
