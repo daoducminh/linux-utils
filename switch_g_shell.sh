@@ -19,8 +19,8 @@ host_name=${host_names[$choice]}
 gcloud_output=$(gcloud cloud-shell ssh --authorize-session --force-key-file-overwrite --dry-run --account="$gcloud_account" 2>&1)
 
 # Extract the public IP address and user from the gcloud output
-public_ip=$(echo "$gcloud_output" | awk -F'@| -- ' '{print $2}')
-user=$(echo "$gcloud_output" | awk -F'@| -- ' '{print $1}' | awk '{print $NF}')
+public_ip=$(echo "$gcloud_output" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
+user=$(echo "$gcloud_output" | sed -nE 's/^.* -o StrictHostKeyChecking=no ([^@]+)@.*$/\1/p')
 
 # Check if host g_shell exists in ~/.ssh/config
 if grep -q "Host $host_name" ~/.ssh/config; then
