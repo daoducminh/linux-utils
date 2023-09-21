@@ -60,9 +60,12 @@ rm ~/.poshthemes/themes.zip
 # Vim 9
 sudo add-apt-repository ppa:jonathonf/vim -y
 
+# ibus bamboo
+sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo
+
 # Install all
 sudo apt update
-sudo apt install -y \
+sudo apt install -y --install-recommends \
     git \
     tmux \
     vim \
@@ -81,7 +84,9 @@ sudo apt install -y \
     sublime-text sublime-merge \
     yarn \
     libcanberra-gtk-module libcanberra-gtk3-module \
-    default-jdk openjdk-11-source
+    default-jdk openjdk-11-source \
+    gnome-shell-extensions gnome-shell-extension-manager \
+    ibus ibus-bamboo
 
 # Install FiraCode Nerd Fonts
 mkdir -p ~/.fonts ~/firacode
@@ -155,6 +160,10 @@ git config --global user.name "Minh Dao"
 git config --global user.email "daoducminh1997@gmail.com"
 git config --global init.defaultBranch main
 
+# Bamboo config
+ibus restart
+env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
+
 # Install Postman from tar.gz
 curl -o postman.tar.gz -L "https://dl.pstmn.io/download/latest/linux64"
 tar -xzf postman.tar.gz
@@ -202,9 +211,23 @@ rm postman.tar.gz
 
 # rm filezilla.tar.bz2
 
-# set shortcuts
+# change default shortcuts
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Primary><Super>s']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['Pause','<Super>t']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys previous "['<Super>F1']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys play "['<Super>F2']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys next "['<Super>F3']"
+
+# disable default shortcuts
+gsettings set org.gnome.shell.keybindings screenshot "[]"
+gsettings set org.gnome.shell.keybindings screenshot-window "[]"
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys help "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenreader "[]"
+gsettings set org.gnome.mutter.wayland.keybindings restore-shortcuts "[]"
+
+# init custom shortcuts
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
 # set shortcut for flameshot
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Flameshot'
@@ -218,12 +241,11 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 # Download Flameshot, Skype, VSCode, DBeaver, Mongo Compass
 curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/flameshot-12.1.0-1.ubuntu-20.04.amd64.deb"
-curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
+# curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
 curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.38.2_amd64.deb"
 curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.10.1_amd64.deb"
 
 sudo apt install ./flameshot.deb \
-    ./skypeforlinux.deb \
     ./compass.deb \
     ./mongosh.deb \
     ./code.deb \
@@ -255,6 +277,7 @@ call plug#end()
 
 let g:material_theme_style = 'palenight'
 colorscheme material
+
 EOL
 
 # Add .bashrc
