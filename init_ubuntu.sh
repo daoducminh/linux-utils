@@ -242,8 +242,8 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/download/v12.1.0/flameshot-12.1.0-1.ubuntu-20.04.amd64.deb"
 # curl -o skypeforlinux.deb -L "https://repo.skype.com/latest/skypeforlinux-64.deb"
-curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.38.2_amd64.deb"
-curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.10.1_amd64.deb"
+curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.39.4_amd64.deb"
+curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.10.6_amd64.deb"
 
 sudo apt install ./flameshot.deb \
     ./compass.deb \
