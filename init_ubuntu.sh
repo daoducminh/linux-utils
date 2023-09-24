@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Init project folder
+mkdir -p ~/Projects
+
+# Update and upgrade
 sudo apt update && sudo apt upgrade -y
 sudo apt install software-properties-common apt-transport-https wget ca-certificates curl gnupg-agent lsb-release -y
 
@@ -16,9 +20,6 @@ curl -sL "https://deb.nodesource.com/setup_18.x" | sudo -E bash -
 # Yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-# Python
-# sudo add-apt-repository ppa:deadsnakes/ppa -y
 
 # Docker
 sudo mkdir -p /etc/apt/keyrings
@@ -56,6 +57,8 @@ wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/theme
 unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
 chmod u+rw ~/.poshthemes/*.omp.*
 rm ~/.poshthemes/themes.zip
+# Override theme file
+cp -f config/jblab_2021.omp.json ~/.poshthemes/jblab_2021.omp.json
 
 # Vim 9
 sudo add-apt-repository ppa:jonathonf/vim -y
@@ -98,7 +101,7 @@ rm -rf ~/firacode
 
 # Load Flameshot's config
 mkdir -p ~/.config/flameshot
-cp -f flameshot.conf ~/.config/flameshot/flameshot.ini
+cp -f config/flameshot.conf ~/.config/flameshot/flameshot.ini
 
 # Set up fish
 mkdir -p ~/.config/fish/
@@ -301,3 +304,39 @@ export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zi
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/share/coursier/bin
 
 EOL
+
+# Install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# Install Alacritty
+cd ~/Projects
+git clone https://github.com/alacritty/alacritty.git
+cd alacritty
+git checkout tags/v0.12.2
+# Install the Rust compiler with rustup
+rustup override set stable
+rustup update stable
+# Install dependencies
+sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev -y
+# Build and install
+cargo build --release
+# Create desktop file
+sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+sudo desktop-file-install extra/linux/Alacritty.desktop
+sudo update-desktop-database
+# Add bash completion
+echo "source $(pwd)/extra/completions/alacritty.bash" >>~/.bashrc
+# Add fish completion
+mkdir -p ~/.config/fish/completions
+cp extra/completions/alacritty.fish ~/.config/fish/completions
+
+# Install Alacritty theme
+cd ~/Projects
+git clone https://github.com/daoducminh/alacritty-theme.git
+cd alacritty-theme
+git checkout minhdd
+
+# Config Alacritty
+mkdir -p ~/.config/alacritty
+cp -f config/alacritty.yml ~/.config/alacritty/alacritty.yml
