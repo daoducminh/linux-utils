@@ -213,7 +213,7 @@ rm postman.tar.gz
 
 # change default shortcuts
 gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Primary><Super>s']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['Pause','<Super>t']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>t']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys previous "['<Super>F1']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys play "['<Super>F2']"
@@ -243,7 +243,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 # set shortcut for alacritty
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ name 'Alacritty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command 'alacritty'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding "['Pause','<Super>t']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding 'Pause'
 
 # Download Flameshot, Skype, VSCode, DBeaver, Mongo Compass
 curl -o code.deb -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
