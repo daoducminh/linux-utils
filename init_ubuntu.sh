@@ -93,11 +93,20 @@ sudo apt install -y --install-recommends \
 
 # Install FiraCode Nerd Fonts
 mkdir -p ~/.fonts ~/firacode
-curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+curl -o ~/firacode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/latest/FiraCode.zip
 unzip firacode.zip -d ~/firacode
-mv ~/firacode/*.tff ~/.fonts/
-rm firacode.zip
-rm -rf ~/firacode
+cp -f ~/firacode/* ~/.fonts/
+rm -rf ~/firacode firacode.zip
+
+# Install FiraMono Nerd Fonts
+mkdir -p ~/.fonts ~/firamono
+curl -o ~/firamono.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/latest/FiraMono.zip
+unzip firamono.zip -d ~/firamono
+cp -f ~/firamono/* ~/.fonts/
+rm -rf ~/firamono firamono.zip
+
+# Remove font metadata
+rm -rf ~/.fonts/*.txt ~/.fonts/readme*
 
 # Load Flameshot's config
 mkdir -p ~/.config/flameshot
