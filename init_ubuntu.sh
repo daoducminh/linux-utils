@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+CUR_DIR=$PWD
+
 # Init project folder
 mkdir -p ~/Projects
 
@@ -347,5 +349,6 @@ cd alacritty-theme
 git checkout minhdd
 
 # Config Alacritty
+cd $CUR_DIR
 mkdir -p ~/.config/alacritty
 cp -f config/alacritty.yml ~/.config/alacritty/alacritty.yml
