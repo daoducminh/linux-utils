@@ -288,19 +288,8 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d >cs && chmod +x cs && ./cs setup
 
 # Add .vimrc
-cat >~/.vimrc <<EOL
-call plug#begin()
-
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
-
-call plug#end()
-
-let g:material_theme_style = 'palenight'
-colorscheme material
-
-EOL
-
+cd $CUR_DIR
+cp -f config/vim/.vimrc ~/.vimrc
 # Add .bashrc
 cat >>~/.bashrc <<EOL
 
