@@ -115,21 +115,9 @@ mkdir -p ~/.config/flameshot
 cp -f config/flameshot.conf ~/.config/flameshot/flameshot.ini
 
 # Set up fish
+cd $CUR_DIR
 mkdir -p ~/.config/fish/
-cat >~/.config/fish/config.fish <<EOF
-oh-my-posh init fish --config ~/.poshthemes/jblab_2021.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/jandedobbeleer.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/night-owl.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/cobalt2.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/mt.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/paradox.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/powerline.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/tonybaloney.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/amro.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/atomic.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/bubbles.omp.json | source
-# oh-my-posh init fish --config ~/.poshthemes/fish.omp.json | source
-EOF
+cp -f config/fish/config.fish ~/.config/fish/config.fish
 
 # Post installation for Docker
 sudo usermod -aG docker $USER
