@@ -278,20 +278,6 @@ curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64
 # Add .vimrc
 cd $CUR_DIR
 cp -f config/vim/.vimrc ~/.vimrc
-# Add .bashrc
-cat >>~/.bashrc <<EOL
-
-#oh-my-posh
-eval "$(oh-my-posh init bash --config ~/.poshthemes/jblab_2021.omp.json)"
-
-# env
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export AIRFLOW_HOME=$HOME/airflow
-export SPARK_HOME=$HOME/spark
-export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.7-src.zip:$PYTHONPATH
-export PATH=$PATH:$HOME/.local/bin:$HOME/.local/share/coursier/bin
-
-EOL
 
 # Install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -313,8 +299,6 @@ sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
 sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
-# Add bash completion
-echo "source $(pwd)/extra/completions/alacritty.bash" >>~/.bashrc
 # Add fish completion
 mkdir -p ~/.config/fish/completions
 cp extra/completions/alacritty.fish ~/.config/fish/completions
@@ -329,3 +313,7 @@ git checkout minhdd
 cd $CUR_DIR
 mkdir -p ~/.config/alacritty
 cp -f config/alacritty.yml ~/.config/alacritty/alacritty.yml
+
+# Copy .bashrc
+cd $CUR_DIR
+cp -f config/bashrc ~/.bashrc
