@@ -295,8 +295,8 @@ sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfi
 # Build and install
 cargo build --release
 # Create desktop file
-sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
-sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+sudo cp -f target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+sudo cp -f extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
 # Add fish completion
