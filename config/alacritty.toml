@@ -12,9 +12,6 @@ unfocused_hollow = true
 
 [keyboard]
 bindings = [
-    { key = "V", mods = "Control", action = "Paste" },
-    { key = "C", mods = "Control", action = "Copy" },
-    { key = "N", mods = "Control", action = "SpawnNewInstance" },
     { key = "Return", mods = "Control", action = "ToggleFullscreen" },
     { key = "Home", chars = "\u001bOH", mode = "AppCursor" },
     { key = "Home", chars = "\u001b[H", mode = "~AppCursor" },
