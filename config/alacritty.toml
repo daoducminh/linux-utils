@@ -1,0 +1,69 @@
+import = ["/home/minhdao/Projects/alacritty-theme/themes/tokyo-night.toml"]
+
+[font]
+normal = { family = "FiraMono Nerd Font", style = "Regular" }
+bold = { family = "FiraMono Nerd Font", style = "Bold" }
+italic = { family = "FiraMono Nerd Font", style = "Italic" }
+size = 12.0
+
+[cursor]
+style = { shape = "Beam" }
+unfocused_hollow = true
+
+[keyboard]
+bindings = [
+    { key = "V", mods = "Control", action = "Paste" },
+    { key = "C", mods = "Control", action = "Copy" },
+    { key = "N", mods = "Control", action = "SpawnNewInstance" },
+    { key = "Return", mods = "Control", action = "ToggleFullscreen" },
+    { key = "Home", chars = "\u001bOH", mode = "AppCursor" },
+    { key = "Home", chars = "\u001b[H", mode = "~AppCursor" },
+    { key = "End", chars = "\u001bOF", mode = "AppCursor" },
+    { key = "End", chars = "\u001b[F", mode = "~AppCursor" },
+    { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+    { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+    { key = "Minus", mods = "Command|Shift", action = "ResetFontSize" },
+    { key = "PageUp", mods = "Shift", chars = "\u001b[5;2~" },
+    { key = "PageUp", mods = "Control", chars = "\u001b[5;5~" },
+    { key = "PageUp", chars = "\u001b[5~" },
+    { key = "PageDown", mods = "Shift", chars = "\u001b[6;2~" },
+    { key = "PageDown", mods = "Control", chars = "\u001b[6;5~" },
+    { key = "PageDown", chars = "\u001b[6~" },
+    { key = "Left", mods = "Shift", chars = "\u001b[1;2D" },
+    { key = "Left", mods = "Control", chars = "\u001b[1;5D" },
+    { key = "Left", mods = "Alt", chars = "\u001b[1;3D" },
+    { key = "Left", chars = "\u001b[D", mode = "~AppCursor" },
+    { key = "Left", chars = "\u001bOD", mode = "AppCursor" },
+    { key = "Right", mods = "Shift", chars = "\u001b[1;2C" },
+    { key = "Right", mods = "Control", chars = "\u001b[1;5C" },
+    { key = "Right", mods = "Alt", chars = "\u001b[1;3C" },
+    { key = "Right", chars = "\u001b[C", mode = "~AppCursor" },
+    { key = "Right", chars = "\u001bOC", mode = "AppCursor" },
+    { key = "Up", mods = "Shift", chars = "\u001b[1;2A" },
+    { key = "Up", mods = "Control", chars = "\u001b[1;5A" },
+    { key = "Up", mods = "Alt", chars = "\u001b[1;3A" },
+    { key = "Up", chars = "\u001b[A", mode = "~AppCursor" },
+    { key = "Up", chars = "\u001bOA", mode = "AppCursor" },
+    { key = "Down", mods = "Shift", chars = "\u001b[1;2B" },
+    { key = "Down", mods = "Control", chars = "\u001b[1;5B" },
+    { key = "Down", mods = "Alt", chars = "\u001b[1;3B" },
+    { key = "Down", chars = "\u001b[B", mode = "~AppCursor" },
+    { key = "Down", chars = "\u001bOB", mode = "AppCursor" },
+    { key = "Tab", mods = "Shift", chars = "\u001b[Z" },
+    { key = "F1", chars = "\u001bOP" },
+    { key = "F2", chars = "\u001bOQ" },
+    { key = "F3", chars = "\u001bOR" },
+    { key = "F4", chars = "\u001bOS" },
+    { key = "F5", chars = "\u001b[15~" },
+    { key = "F6", chars = "\u001b[17~" },
+    { key = "F7", chars = "\u001b[18~" },
+    { key = "F8", chars = "\u001b[19~" },
+    { key = "F9", chars = "\u001b[20~" },
+    { key = "F10", chars = "\u001b[21~" },
+    { key = "F11", chars = "\u001b[23~" },
+    { key = "F12", chars = "\u001b[24~" },
+    { key = "Back", chars = "\u007f" },
+    { key = "Back", mods = "Alt", chars = "\u001b\u007f" },
+    { key = "Insert", chars = "\u001b[2~" },
+    { key = "Delete", chars = "\u001b[3~" },
+]

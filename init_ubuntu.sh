@@ -305,14 +305,13 @@ cp extra/completions/alacritty.fish ~/.config/fish/completions
 
 # Install Alacritty theme
 cd ~/Projects
-git clone https://github.com/daoducminh/alacritty-theme.git
+git clone https://github.com/alacritty/alacritty-theme.git
 cd alacritty-theme
-git checkout minhdd
 
 # Config Alacritty
 cd $CUR_DIR
 mkdir -p ~/.config/alacritty
-cp -f config/alacritty.yml ~/.config/alacritty/alacritty.yml
+cp -f config/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # Copy .bashrc
 cd $CUR_DIR
