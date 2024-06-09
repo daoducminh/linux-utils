@@ -9,4 +9,5 @@ JB_PRODUCTS="PyCharm PhpStorm IntelliJIdea WebStorm CLion GoLand Rider DataGrip 
 for PRD in $JB_PRODUCTS; do
     rm -rf ~/.config/JetBrains/${PRD}*/eval
     rm -rf ~/.config/JetBrains/${PRD}*/options/other.xml
+    rm -rf ~/.config/JetBrains/${PRD}*/*.key
 done
