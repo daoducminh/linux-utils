@@ -43,9 +43,6 @@ sudo add-apt-repository ppa:slgobinath/safeeyes -y
 # Grub-customizer
 sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y
 
-# CopyQ
-sudo add-apt-repository ppa:hluk/copyq -y
-
 # Git
 sudo add-apt-repository ppa:git-core/ppa -y
 
@@ -82,7 +79,6 @@ sudo apt install -y --install-recommends \
     docker-ce docker-ce-cli containerd.io docker-compose-plugin \
     goldendict \
     python3-pip python3-dev \
-    copyq \
     safeeyes \
     build-essential \
     gnome-tweaks \
@@ -128,27 +124,29 @@ chsh -s $(which fish)
 # Pip
 python3 -m pip install -U \
     pip \
-    virtualenv \
+    pipx \
     numpy \
     matplotlib \
     pandas \
-    youtube-dl \
     scrapy \
     itemloaders \
-    seaborn \
     pillow \
-    autopep8 \
-    pylint \
     rope \
     black \
     faker \
-    flask \
     sqlalchemy \
     psycopg2-binary
 
+python3 -m pipx ensurepath
+
+# Poetry
+pipx install poetry
+poetry completions bash >>~/.bash_completion
+poetry completions fish >~/.config/fish/completions/poetry.fish
+
 # F12 Terminal
 mkdir -p ~/.local/share/nautilus/scripts/
-sudo printf "#\!/bin/bash\n\ngnome-terminal" >~/.local/share/nautilus/scripts/Terminal
+sudo printf "#\!/bin/bash\n\nalacritty" >~/.local/share/nautilus/scripts/Terminal
 sudo printf "#\!/bin/bash\n\ncode ." >~/.local/share/nautilus/scripts/vscode
 sudo chmod +x ~/.local/share/nautilus/scripts/Terminal
 sudo chmod +x ~/.local/share/nautilus/scripts/vscode
@@ -164,7 +162,8 @@ git config --global init.defaultBranch main
 
 # Bamboo config
 ibus restart
-env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" && gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
+env DCONF_PROFILE=ibus dconf write /desktop/ibus/general/preload-engines "['BambooUs', 'Bamboo']" &&
+    gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('ibus', 'Bamboo')]"
 
 # Install Postman from tar.gz
 curl -o postman.tar.gz -L "https://dl.pstmn.io/download/latest/linux64"
@@ -254,11 +253,12 @@ curl -o flameshot.deb -L "https://github.com/flameshot-org/flameshot/releases/do
 curl -o compass.deb -L "https://downloads.mongodb.com/compass/mongodb-compass_1.39.4_amd64.deb"
 curl -o mongosh.deb -L "https://downloads.mongodb.com/compass/mongodb-mongosh_1.10.6_amd64.deb"
 
-sudo apt install ./flameshot.deb \
+sudo apt install -y \
+    ./flameshot.deb \
     ./compass.deb \
     ./mongosh.deb \
-    ./code.deb \
-    -y
+    ./code.deb
+
 rm *.deb
 
 # Install Calibre 5.44.0 for Ubuntu 20.04
@@ -316,3 +316,6 @@ cp -f config/alacritty.toml ~/.config/alacritty/alacritty.toml
 # Copy .bashrc
 cd $CUR_DIR
 cp -f config/bashrc ~/.bashrc
+
+# Install polars
+python3 -m pip install -U polars
