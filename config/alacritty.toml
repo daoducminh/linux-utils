@@ -1,5 +1,5 @@
 [general]
-import = ["/home/minhdao/Projects/alacritty-theme/themes/tokyo-night.toml"]
+import = ["/home/minhdao/Projects/alacritty-theme/themes/tokyo_night.toml"]
 
 [font]
 normal = { family = "FiraMono Nerd Font", style = "Regular" }
