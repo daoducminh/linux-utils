@@ -1,3 +1,4 @@
+[general]
 import = ["/home/minhdao/Projects/alacritty-theme/themes/tokyo-night.toml"]
 
 [font]
