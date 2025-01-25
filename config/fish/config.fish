@@ -11,4 +11,4 @@ oh-my-posh init fish --config ~/.poshthemes/jblab_2021.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/bubbles.omp.json | source
 # oh-my-posh init fish --config ~/.poshthemes/fish.omp.json | source
 
-alias nv=nvim
+alias vim=nvim
