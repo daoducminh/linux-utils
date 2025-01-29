@@ -31,24 +31,13 @@ sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y
 # Git
 sudo add-apt-repository ppa:git-core/ppa -y
 
-# oh-my-posh
-curl -s https://ohmyposh.dev/install.sh | sudo bash -s
-
-# oh-my-posh themes
-mkdir ~/.poshthemes
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-chmod u+rw ~/.poshthemes/*.omp.*
-rm ~/.poshthemes/themes.zip
-# Override theme file
-cp -f config/jblab_2021.omp.json ~/.poshthemes/jblab_2021.omp.json
-
 # ibus bamboo
 sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo
 
 # Install all
 sudo apt update
 sudo apt install -y --install-recommends \
+    curl wget \
     git \
     tmux \
     fish \
@@ -85,7 +74,6 @@ chsh -s $(which fish)
 # Pip
 python3 -m pip install -U \
     pip \
-    pipx \
     numpy \
     matplotlib \
     pandas \
@@ -96,13 +84,6 @@ python3 -m pip install -U \
     faker \
     sqlalchemy \
     psycopg2-binary
-
-python3 -m pipx ensurepath
-
-# Poetry
-pipx install poetry
-poetry completions bash >>~/.bash_completion
-poetry completions fish >~/.config/fish/completions/poetry.fish
 
 # F12 Terminal
 mkdir -p ~/.local/share/nautilus/scripts/
