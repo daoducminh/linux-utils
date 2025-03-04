@@ -74,8 +74,7 @@
           "leading_diamond": "<transparent,background>\ue0b0</>",
           "style": "diamond",
           "template": "<transparent> \uf12a</> {{ .Meaning }} ",
-          "trailing_diamond": "\ue0b0",
-          "type": "exit"
+          "trailing_diamond": "\ue0b0"
         }
       ],
       "type": "prompt"

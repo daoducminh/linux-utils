@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 declare -A accounts=(
-    [1]="minhdd@bravestars.com"
+    [1]="daoducminh1997@gmail.com"
     [2]="20156051@student.hust.edu.vn"
 )
 
