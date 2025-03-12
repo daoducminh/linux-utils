@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Download neovim tarball
-curl -sfL -C - -o nvim.tar.gz https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+curl -sfL -C - -o nvim.tar.gz https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
 
 # Download vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -11,10 +11,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 tar -xf nvim.tar.gz
 
 # Update icon in desktop file
-sed -i 's/Icon=nvim/Icon=\/opt\/nvim\/share\/icons\/hicolor\/128x128\/apps\/nvim.png/g' nvim-linux64/share/applications/nvim.desktop
+sed -i 's/Icon=nvim/Icon=\/opt\/nvim\/share\/icons\/hicolor\/128x128\/apps\/nvim.png/g' nvim-linux-x86_64/share/applications/nvim.desktop
 
 # Move to /opt
-sudo mv nvim-linux64 /opt/nvim
+sudo mv nvim-linux-x86_64 /opt/nvim
 
 # Create symlink for nvim
 sudo ln -s /opt/nvim/bin/nvim /usr/bin/nvim
